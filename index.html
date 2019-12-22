@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>L5 3D Web Map Visual Variables Popup Assignmet</title>
+	<link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css"/>
+    <script src="https://js.arcgis.com/4.12/"></script>
+	<script src="main.js"></script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+	<div id="text">
+	<p>Lesson 5 Writeup</p>
+
+<p>Building upon the previous assignments, in this lesson I gained a deeper understanding of visualizing layers programmatically. For the assignment, I created a 3D scene using visual variables to display census tract population data from 2016, focused on California. I included popups that display the total population, the FIPS Code, and size of the census tract in square miles.</p>
+
+<p>There were a few neat ideas I learned in this lesson worth mentioning. Being able to build layers visually within AGOL and then to consume the layer ID into a JS script is something I'm sure I'll use into the future. As for 3D specific visualizations, utilizing the elevation offset for layers, and to also use a negative offset to place features underground is pretty cool. The different renderers obviously provide a lot of functionality for tweaking what story you want your layers to tell, and I'll have to commit for time and effort to really learn what can be done with those. Finally, being able to set the height and direction of the camera view had me tinkering for a while as it was quite enjoyable to instantly create different perspectives of the data. The icing on the cake for the lesson was the simplicity of providing popups to the layers and choosing what to show and how to show it with just a little scripting thrown in.</p>
+	</div>
+  </body>
+</html>

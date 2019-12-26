@@ -1,27 +1,49 @@
-require(["esri/Map","esri/views/SceneView","esri/Camera","esri/layers/FeatureLayer","esri/renderers/SimpleRenderer","esri/symbols/PolygonSymbol3D","esri/symbols/ExtrudeSymbol3DLayer","esri/widgets/Legend"], function(Map,SceneView,Camera,FeatureLayer,SimpleRenderer,PolygonSymbol3D,ExtrudeSymbol3DLayer,Legend)
-{
+require([
+  "esri/Map",
+  "esri/views/SceneView",
+  "esri/Camera",
+  "esri/layers/FeatureLayer",
+  "esri/renderers/SimpleRenderer",
+  "esri/symbols/PolygonSymbol3D",
+  "esri/symbols/ExtrudeSymbol3DLayer",
+  "esri/widgets/Legend"
+], function(
+  Map,
+  SceneView,
+  Camera,
+  FeatureLayer,
+  SimpleRenderer,
+  PolygonSymbol3D,
+  ExtrudeSymbol3DLayer,
+  Legend
+) {
   var map = new Map({
     basemap: "dark-gray"
   });
 
   var template = {
     title: "California Census Tract Population",
-    content: "Total Population: {TOTPOP_CY}<br/>FIPS Code: {FIPS}<br/>Square Miles: {SQMI} <br/>County: {COUNTY}",
-	fieldInfos: [{
-      fieldName: "TOTPOP_CY",
-      format: {
-        digitSeparator: true, 
-        places: 0}
-    },
-    {
-      fieldName: "FIPS"
-	},
-	{
-      fieldName: "SQMI",
-      format: {
-      digitSeparator: true,
-      places: 1}
-    }]
+    content:
+      "Total Population: {TOTPOP_CY}<br/>FIPS Code: {FIPS}<br/>Square Miles: {SQMI} <br/>County: {COUNTY}",
+    fieldInfos: [
+      {
+        fieldName: "TOTPOP_CY",
+        format: {
+          digitSeparator: true,
+          places: 0
+        }
+      },
+      {
+        fieldName: "FIPS"
+      },
+      {
+        fieldName: "SQMI",
+        format: {
+          digitSeparator: true,
+          places: 1
+        }
+      }
+    ]
   };
 
   var defaultSym = new PolygonSymbol3D({
@@ -55,12 +77,12 @@ require(["esri/Map","esri/views/SceneView","esri/Camera","esri/layers/FeatureLay
             color: "#bdd7e7",
             label: "101 - 1,000"
           },
-		  {
+          {
             value: 5000,
             color: "#6baed6",
             label: "1,001 - 5,000"
           },
-		  {
+          {
             value: 10000,
             color: "#3182bd",
             label: "5,001 - 10,000"
@@ -87,11 +109,12 @@ require(["esri/Map","esri/views/SceneView","esri/Camera","esri/layers/FeatureLay
   });
 
   var popLyr = new FeatureLayer({
-    url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Enriched_Census_Tracts_2016_2021/FeatureServer/0",
-	renderer: renderer,
+    url:
+      "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Enriched_Census_Tracts_2016_2021/FeatureServer/0",
+    renderer: renderer,
     outFields: ["*"],
     definitionExpression: "STATE = 'CA'",
-	popupTemplate: template,
+    popupTemplate: template
   });
   map.add(popLyr);
 
